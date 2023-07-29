@@ -1,0 +1,24 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content%}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Create Course</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-form">
+        <div class="hull">
+            <form id="create" method="post" class="form-main">
+                <div class="section__body">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input class="btn" type="submit" value="Create Course">
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}

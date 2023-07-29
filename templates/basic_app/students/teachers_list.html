@@ -1,0 +1,65 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content%}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Select Teacher and view their Courses</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-boxes">
+        <div class="hull">
+            <ul class="boxes">
+                {% for teacher in teachers_list %}
+                <li>
+                    <div class="box box--member">
+                        <picture class="box__image">
+                            {% if teacher.profile_pic %}
+                             <img src="{{ teacher.profile_pic.url }}" alt="this is a teacher image">
+                            {% else %}
+                                 <img src="{% static 'images/uchitelite.jpg' %}" alt="this is a teacher image">
+                            {% endif %}
+                        </picture>
+
+                        <div class="box__body">
+                            <p class="box__title h3">
+                                {% if teacher.user.first_name and teacher.user.last_name %}
+                                     Full Name:{{ teacher.user.first_name}} {{ teacher.user.last_name}}
+                                {% else %}
+                                    User Name: {{ teacher.user.username}}
+                                {% endif %}
+                            </p>
+
+                            <p class="box__type h5"> {{ teacher.description}} </p>
+
+                            <p class="box__entry">
+                                {{ course.description | slice:":50" }}
+                            </p>
+                        </div>
+
+                        <div class="box__meta">
+                            <p>
+                                Average Rating:
+                                {% if course.average_rating %}
+                                    {{ course.average_rating|floatformat:"1" }}
+                                {% else %}
+                                    No Rating Yet.
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div class="box__action">
+                            <a href="{% url 'teacher_app:teacher_courses_list' teacher.id%}" class="btn">Details</a>
+                        </div>
+                    </div>
+
+                 </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

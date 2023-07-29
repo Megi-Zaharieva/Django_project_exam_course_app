@@ -1,0 +1,30 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Add review</h1>
+            </div>
+
+            <div class="section__bottom">
+                {% include 'basic_app/teachers/left_menu_base.html' %}
+                {% include 'basic_app/comments/left_menu_reviews.html' %}
+            </div>
+        </div>
+    </section>
+
+     <section class="section-form section-form--fw">
+        <div class="hull">
+            <div class="section__body">
+                 <form method="post" class="form-main">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+                     <input type="submit" class="btn" value="Submit Review">
+                     <a href="{% url 'teacher_app:course_details' course_id=course_id %}" class="btn">Back</a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

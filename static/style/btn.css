@@ -1,0 +1,47 @@
+[class^='btn'] {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: none;
+	appearance: none;
+	border-radius: 0;
+	border: 0;
+}
+
+.btn {
+	color: #fff;
+	padding: 17px;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	line-height: 1.2;
+	background-color: #333;
+	text-decoration: none;
+	border: 2px solid #333;
+	display: inline-block;
+    transition: color .3s, background-color .3s;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.btn--white {
+	border-color: #fff;
+	background-color: #fff;
+	color: #333;
+
+}
+
+.btn--white:hover {
+	background-color: #333;
+	border-color: #fff;
+	color: #fff;
+}
+
+.btn--sm {
+	padding: 10px;
+}

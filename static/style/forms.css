@@ -1,0 +1,74 @@
+/* Form main - form-main.css */
+
+.form-main {
+
+}
+
+.form-main select,
+.form-main input:not([type="submit"]),
+.form-main textarea {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 2px solid #999;
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 18px;
+    transition: border-color .3s, color .3s, padding .3s;
+    color: #333;
+}
+.form-main textarea {
+    height: 100px;
+}
+
+
+.form-main input:focus,
+.form-main input:focus-visible,
+.form-main input:active,
+.form-main textarea:focus,
+.form-main textarea:focus-visible,
+.form-main textarea:active {
+    appearance: none;
+    text-decoration: none;
+    border-color: #000;
+    outline: none;
+    color: #000;
+
+}
+
+.form-main input:not([type="submit"]):focus,
+.form-main input:not([type="submit"]):focus-visible,
+.form-main input:not([type="submit"]):active {
+    padding-left: 0;
+}
+
+.form-main .form__row {
+    margin-bottom: 30px;
+}
+
+.form-main .form__row:last-child {
+    margin-bottom: 0;
+}
+
+.form-main .form__row--actions,
+.form-main .form__row--actions .form__controls {
+    text-align: center;
+}
+
+
+.form-main .form__row--error p {
+    text-align: center;
+    color: #eb4034;
+}
+
+.form-main .form__row--help-text {
+    font-size: 12px;
+    color: #999999;
+    margin-top: 3px;
+}
+
+.form-main .errorlist{
+    text-align: center;
+    color: #eb4034;
+}

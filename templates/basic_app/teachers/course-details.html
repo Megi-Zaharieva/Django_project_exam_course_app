@@ -1,0 +1,85 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+     <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Course list</h1>
+            </div>
+
+            <div class="section__bottom">
+                {% include 'basic_app/teachers/left_menu_base.html' %}
+                {% include 'basic_app/comments/left_menu_reviews.html' %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-boxes">
+        <div class="hull">
+             <div class="section__head">
+                 <p class="h2 no-articles">{{ form.title }}</p>
+             </div>
+
+            <div class="section__body">
+                 <ul class="boxes boxes--fw">
+                     <li>
+                         <div class="box ">
+                            <picture class="box__image">
+                                 <iframe width="560" height="315" src="{{ video_details }}"  allowfullscreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                            </picture>
+
+                             <div class="box__body">
+                                <p class="box__type"><strong class="h5">Date:</strong> {{ form.date }}</p>
+
+                                 <p class="box__type"><strong class="h5">Type:</strong> {{ form.get_type_display }}</p>
+
+                                <p class="box__entry">
+                                    <strong class="h5">Description:</strong> {{ form.description }}
+                                </p>
+                            </div>
+
+                            <div class="box__comments">
+                                <p class="h5">Comments:</p>
+
+                                {% if comments_ls %}
+                                    <ul>
+                                        {% for comment in comments_ls %}
+                                            <li>
+                                                {% if comment.user == user or form.user == user or user.is_staff or user.is_superuser%}
+                                                    <a href="{% url 'teacher_app:edit_comment' course_id=form.id comment_id=comment.id %}" class="btn btn--sm">Edit</a>
+                                                    <a href="{% url 'teacher_app:delete_comment' course_id=form.id comment_id=comment.id %}" class="btn btn--sm">Delete</a>
+                                                {% endif %}
+                                                {{ comment.user_comments }} - {{ comment.user.username }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p>No comments yet.</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="box__action">
+                                 {% if user.is_authenticated %}
+                                    <a href="{% url 'teacher_app:add_comment' course_id=form.id %}" class="btn">Add Comment</a>
+                                {% endif %}
+                                {% if user.is_authenticated and form.user == user or user.is_staff or user.is_superuser %}
+                                    <a href="{% url 'teacher_app:edit_course' form.id %}" class="btn">Edit</a>
+                                    <a href="{% url 'teacher_app:delete_course' form.id %}" class="btn">Delete</a>
+                                {% endif %}
+                                {% if user.userprofileinfo.type == "Teacher" and form.user == user %}
+                                    <a href="{% url 'teacher_app:my_courses' %}" class="btn">Back</a>
+                                {% else %}
+                                    <a href="{% url 'teacher_app:teacher_courses_list' form.user.userprofileinfo.id %}"
+                                       class="btn">Back</a>
+                                {% endif %}
+                            </div>
+                         </div>
+                     </li>
+                 </ul>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="section-hero {% if not user.is_authenticated %} section-hero--alt {% endif %}">
+        <div class="hull">
+            <picture class="section__image">
+                <img src="{% static 'images/1200_uchilishte-uchitelka-uchenici.webp' %}" alt="teacher">
+            </picture>
+
+            <div class="section__content">
+                {% if user.is_authenticated %}
+                    <h1>Hello, {{ user.username }}</h1>
+                {% endif %}
+
+                {% if not user.is_authenticated %}
+                    <h1>Perennial course in mathematics</h1>
+
+                    <h3>Leave everything in hands to our teachers.
+                        They will assist you in all possible ways,
+                        to be a true professional in the field because that is their mission.
+                        Our strategy and goal is to help students.
+                    </h3>
+
+                    <p> With us you can do a wide selection of math lessons completely free of charge,
+                        we offer the following: </p>
+
+                    <ul class="section__list">
+                       <li> Math lessons for 1st grade; </li>
+                        <li> Math lessons for 2nd grade; </li>
+                        <li> Math lessons for 3rd grade; </li>
+                        <li> Math lessons for 4th grade; </li>
+                        <li> Math lessons for 5th grade; </li>
+                        <li> Math lessons for 6th grade; </li>
+                        <li> Math lessons for 7th grade; </li>
+                        <li> Math lessons for 8th grade; </li>
+                        <li> Math lessons for 9th grade; </li>
+                        <li> Math lessons for 10th grade; </li>
+                        <li> Math lessons for grade 11; </li>
+                        <li> Math lessons for grade 12; </li>
+                    </ul>
+
+                    <p>Sign up for Maths lessons,
+                        with a teacher of your choice
+                        and at a time that is convenient for you.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

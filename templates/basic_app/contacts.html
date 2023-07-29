@@ -1,0 +1,69 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+     <section class="section-hero section-hero--sm">
+        <div class="hull">
+            <picture class="section__image">
+                 <img src="{% static 'images/Contact-us-1024x280.jpg' %}" alt="contactus">
+            </picture>
+
+            <div class="section__content">
+                <h1>Contact us</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-contacts">
+        <div class="hull">
+            <div class="section__inner">
+                <div class="section__content section__content--left">
+                    <div class="list-contacts">
+                        <p class="h2 list__title"><span>Contact email:</span></p>
+
+                        <ul>
+                            <li><a href="mailto:matematica@django-project.com">matematica@django-project.com</a></li>
+                            <li><a href="mailto:support@django-project">support@django-project</a></li>
+                        </ul>
+                    </div>
+
+                   <div class="list-contacts">
+                        <p class="h2 list__title"><span>Contact phone number:</span></p>
+
+                        <ul>
+                            <li><a href="tel:+35970042444">0700 42 444</a></li>
+                            <li><span>Kalina Ivanova:</span> <a href="tel:+359886071015">0886 071 015</a></li>
+                            <li><span>Simion Pavlov:</span> <a href="+359889213248">0889 213 248</a></li>
+                            <li><span>Miroslav Kirov:</span> <a href="+359887732930">0887 732 930</a></li>
+                        </ul>
+                   </div>
+
+                </div>
+
+                <div class="section__content section__content--right">
+                    <div class="list-contacts">
+                        <p class="h2 list__title"><span>Information Center:</span></p>
+
+                        <ul>
+                            <li><address>City of Varna ,ul."Sirma Voivoda" ,Postcode 9000,building A, floor 2, room 5.</address></li>
+                            <li>Opening time: Working days from 9 a.m. to 6 p.m</li>
+                            <li>Days off: Saturday and Sunday</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section__content section__content--fw">
+                    <div class="list-contacts">
+                        <p class="h2 list__title"><span>Our office can advertise here:</span></p>
+
+                         <iframe src="https://www.google.com/maps/embed?pb=!4v1690307472732!6m8!1m7!1s8G4kZxOnrTwAM8ti-hz7_w!2m2!1d43
+                        .22399067601862!2d27.94229566510147!3f350.40240058670844!4f-8.46131200863472!5f0.7820865974627469"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

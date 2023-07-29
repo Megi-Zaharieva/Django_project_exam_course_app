@@ -1,0 +1,42 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Register</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-form">
+        <div class="hull">
+            <div class="section__head">
+                <p class="section__title h2"><span>Please Register</span></p>
+                {% if error %}
+                    <p class="section__subtitle h4">{{ error }}</p>
+                {% endif %}
+            </div>
+
+            <div class="section__body content auth">
+                <div class="section__logo">
+                    <img src="{% static 'images/logo.png' %}" alt="Site logo">
+                </div>
+                <form id="register" enctype="multipart/form-data" method="post" class="form-main">
+                    {% for _, error in error_dict.items %}
+                        {{ error }}
+                    {% endfor %}
+
+                        {{ user_form.as_div }}
+                        {{ profile_form.as_div }}
+                        {% csrf_token %}
+                        <div class="form__row form__row--actions">
+                            <input class="btn submit" type="submit" value="Register Profile">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content%}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Hello {{ user.username }}</h1>
+            </div>
+
+            <div class="section__bottom">
+                {% include 'basic_app/teachers/left_menu_base.html' %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

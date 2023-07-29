@@ -1,0 +1,34 @@
+{% extends 'basic_app/base.html' %}
+{% block content %}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Add/View reviews</h1>
+            </div>
+
+            <div class="section__bottom">
+                {% include 'basic_app/teachers/left_menu_base.html' %}
+                {% include 'basic_app/comments/left_menu_reviews.html' %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-reviews">
+       <div class="hull">
+            <p class="section__title h2">Reviews:</p>
+
+            {% if reviews %}
+                <ul class="section__list">
+                    {% for review in reviews %}
+                        <li>{{ review.review_text }} - Rating: {{ review.rating }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No reviews yet.</p>
+            {% endif %}
+            <a href="{% url 'teacher_app:course_details' course_id=course_id %}" class="btn">Back</a>
+       </div>
+    </section>
+
+{% endblock %}

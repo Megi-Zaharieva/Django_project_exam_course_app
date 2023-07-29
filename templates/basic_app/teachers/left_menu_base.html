@@ -1,0 +1,11 @@
+{% if user.is_authenticated %}
+    {% if user.userprofileinfo.type == "Teacher" and user.userprofileinfo.admin_approved == "Yes" %}
+        <div class="list-actions">
+            <ul>
+                <li><a class="btn btn--white" href="{% url 'teacher_app:my_courses' %}">View Courses</a></li>
+                <li><a class="btn btn--white" href="{% url 'teacher_app:add_course' %}">Add Courses</a></li>
+
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}

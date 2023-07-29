@@ -1,0 +1,23 @@
+{% if user.is_authenticated %}
+    <div class="list-actions">
+        <ul>
+            {% if not user_has_review %}
+                {% if user.userprofileinfo.type == "Teacher" %}
+                    <li>
+
+                    </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'teacher_app:add_review' course_id=course_id %}" class="btn btn--white">Add Review</a>
+                </li>
+                {% endif %}
+            {% else %}
+                <li>
+                    <p>Thank you for your Review!</p>
+                </li>
+            {% endif %}
+
+            <li><a href="{% url 'teacher_app:view_reviews' course_id=course_id %}" class="btn btn--white">View Reviews</a></li>
+        </ul>
+    </div>
+{% endif %}

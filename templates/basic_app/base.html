@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}"/>
+    <title>Learning center</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="hull">
+            <div class="header__inner">
+                <a class="header__logo" href="{% url 'index' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="Site logo">
+                </a>
+
+                <nav class="header__nav">
+                   <ul>
+                        <li>
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        {% if user.is_authenticated and user.userprofileinfo.type == "Teacher" and user.userprofileinfo.admin_approved == "Yes" %}
+                            <li>
+                                <a href="{% url 'teacher_app:teachers_home' %}">Teacher Home</a>
+                            </li>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'teacher_app:teachers_list' %}">Courses</a>
+                            </li>
+                            {% if user.is_staff or user.is_superuser %}
+                                <li>
+                                    <a href="{% url 'admin:index' %}">Admin Panel</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{% url 'teacher_app:profile_details' %}">Profile</a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <a href="{% url 'teacher_app:search_results' %}">Search</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'logout' %}">Logout</a>
+                            </li>
+
+                        {% else %}
+                            <li>
+                                <a href="{% url 'teacher_app:contacts' %}">Contacts</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'teacher_app:login' %}">Login</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'teacher_app:registration' %}">Register</a>
+                            </li>
+                        {% endif %}
+                   </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="main">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="hull">
+              <div class="footer__inner">
+                  <a class="footer__logo" href="{% url 'index' %}">
+                      <img src="{% static 'images/logo.png' %}" alt="Site logo">
+                  </a>
+
+                  <div class="footer__content">
+                      <p class="h2"> Contact us:</p>
+                      <p><span>Email:</span><a href="mailto:matematica@django-project.com">matematica@django-project.com</a></p>
+                      <p><span>Tel:</span><a href="tel:+359888123123">0888 123 123</a></p>
+                      <p><span>Working hours:</span>Еvery weekday from 9 a.m. to 6 p.m(without public holidays)</p>
+                      <p class="footer__copyright">&copy; All rights reserved.</p>
+                  </div>
+            </div>
+        </div>
+    </footer>
+</body>
+{% csrf_token %}

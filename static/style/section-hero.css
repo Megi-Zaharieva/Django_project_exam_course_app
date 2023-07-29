@@ -1,0 +1,118 @@
+.section-hero {
+    position: relative;
+    padding: 200px 0;
+    height: calc(100vh - 120px);
+    min-height: 700px;
+}
+
+.section-hero .hull {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+
+.section-hero .section__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.section-hero .section__image img {
+    width: 100%;
+    height: 100%;
+    object-position: center center;
+    object-fit: cover;
+}
+
+.section-hero .section__content {
+    position: relative;
+    z-index: 1;
+     background-color: rgb(0, 0, 0, .7);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.section-hero .section__bottom {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Section Hero Alt */
+
+.section-hero--alt {
+    padding: 50px 0;
+}
+
+.section-hero--alt .section__list  {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.section-hero--alt .section__list li {
+    position: relative;
+    padding: 15px 15px 15px 40px;
+    max-width: 50%;
+    font-size: 18px;
+    font-weight: 500;
+    list-style-type: none;
+}
+
+.section-hero--alt .section__list li:before {
+    position: absolute;
+    content: '';
+    top: 20px;
+    left: 15px;
+    width: 15px;
+    height: 15px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 2.54 2.54' style='enable-background:new 0 0 512 512' xml:space='preserve' fill-rule='evenodd' class=''%3E%3Cg%3E%3Ccircle cx='1.27' cy='1.27' r='1.27' fill='%233387c7' data-original='%2300ba00' class='' opacity='1'%3E%3C/circle%3E%3Cpath fill='%23ffffff' d='M.873 1.89.41 1.391a.17.17 0 0 1 .008-.24.17.17 0 0 1 .24.009l.358.383.567-.53a.17.17 0 0 1 .016-.013l.266-.249a.17.17 0 0 1 .24.008.17.17 0 0 1-.008.24l-.815.76-.283.263-.125-.134z' data-original='%23ffffff'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-position: center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.section-hero--alt .section__content {
+    padding: 30px 20px;
+}
+
+.section-hero--alt .section__content h1 {
+    display: inline-block;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #fff;
+}
+
+/* Section Hero Small */
+
+.section-hero--sm {
+    position: relative;
+    padding: 160px 0;
+    height: auto;
+    min-height: unset;
+    text-align: center;
+}
+
+/* Section Hero Small */
+
+.section-hero--solid {
+    padding: 100px 0;
+    background-color: #333;
+}
+
+.section-hero--solid .section__content {
+    background-color: transparent;
+}
+
+/* Section Hero Red */
+
+.section-hero--red section__content h1 {
+    color: #eb4034;
+}
+
+.section__bottom .list-actions p {
+    color:white;
+}

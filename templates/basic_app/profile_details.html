@@ -1,0 +1,38 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>User Profile Details/Edit</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-form">
+        <div class="hull">
+              {% if profile_form.instance.type == 'Teacher' %}
+                  <div class="section__head">
+                    {% if profile_form.instance.admin_approved == 'Yes' %}
+                        <p class="section__title h2"><span>Your teacher profile: Accepted!</span></p>
+                    {% elif profile_form.instance.admin_approved == 'No' %}
+                        <p class="section__title h2">Your teacher profile: Not accepted!</p>
+                    {% else %}
+                        <p class="section__title h2">Your teacher profile: Waiting for admin approve</p>
+                    {% endif %}
+                  </div>
+            {% endif %}
+
+            <div class="section__body">
+                <form method="post" enctype="multipart/form-data" class="form-main">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                    <input class="btn" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

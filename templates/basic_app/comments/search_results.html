@@ -1,0 +1,43 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Search Courses</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-form section-form--fw">
+        <div class="hull">
+            <div class="section__body">
+                <form method="post" action="{% url 'teacher_app:search_results' %}" class="form-main">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-results">
+        <div class="hull">
+            <p class="h2 section__title">Search Results:</p>
+            {% if courses_ls %}
+                <ul class="section__list">
+                    {% for course in courses_ls %}
+                        <li>
+                            <a href="{% url 'teacher_app:course_details' course_id=course.id %}">{{ course.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if not courses_ls and search_button_clicked %}
+                <p class="section__subtitle h4">No results found.</p>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

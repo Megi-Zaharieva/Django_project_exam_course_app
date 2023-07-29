@@ -1,0 +1,34 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Edit course</h1>
+            </div>
+
+            <div class="section__bottom">
+                {% include 'basic_app/teachers/left_menu_base.html' %} %}
+            </div>
+        </div>
+    </section>
+
+    <div class="section-form">
+        <div class="hull">
+            <div class="section__body">
+                 <form method="post" class="form-main">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="section__actions">
+                        <button class="btn" type="submit">Save</button>
+
+                        <a href="{% url 'teacher_app:course_details' course_id=course.id %}"
+                           class="btn">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

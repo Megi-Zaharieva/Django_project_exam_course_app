@@ -1,0 +1,57 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Login</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-form">
+        <div class="hull">
+            <div class="section__head">
+                <p class="section__title h2"><span>Please Login</span></p>
+            </div>
+
+            <div class="section__body content auth">
+                <form method="post" action="{% url 'teacher_app:login' %}" class="form-main">
+                    {% csrf_token %}
+
+                    <div class="form__row">
+                        <div class="form__controls">
+                            <label for="username" class="sr-only">Username:</label>
+                            <input type="text" name="username" id="username" placeholder="Username">
+                        </div>
+                    </div>
+
+                    <div class="form__row">
+                        <div class="form__controls">
+                            <label for="password" class="sr-only">Password:</label>
+                            <input type="password" name="password" id="password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form__row form__row--actions">
+                        <div class="form__controls">
+                            <input type="submit" value="Log in" class="btn">
+                        </div>
+                    </div>
+
+                    <div class="form__row form__row--error">
+                        {% if error %}
+                            <p class="section__subtitle h4">{{ error }}</p>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+
+            <div class="section__foot">
+                <p>Don't have account? <a href="{% url 'teacher_app:registration' %}">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

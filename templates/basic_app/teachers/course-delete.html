@@ -1,0 +1,26 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content%}
+
+
+    <section class="section-form">
+        <div class="hull">
+            <div class="section__body">
+                <form id="delete" method="post" class="form-main">
+                    <p class="h2 section__title" style="display: flex; justify-content: center;"><span>Delete Course ?</span></p>
+                        {% csrf_token %}
+                    <p class="section__message">If you press "Delete"  your course will be deleted permanently </p>
+
+                    <p class="h4">Title: {{ course.title }} </p>
+
+                    <div class="section__actions">
+                        <input class="btn" type="submit" value="Delete">
+
+                        <a href="{% url 'teacher_app:course_details' course_id=course.id %}"
+                               class="btn">Back</a>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

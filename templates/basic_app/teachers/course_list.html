@@ -1,0 +1,73 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+     <section class="section-hero section-hero--sm section-hero--solid">
+        <div class="hull">
+            <div class="section__content">
+                <h1>Course list</h1>
+            </div>
+
+            <div class="section__bottom">
+                {% include 'basic_app/teachers/left_menu_base.html' %}
+            </div>
+        </div>
+    </section>
+
+    <section class="section-boxes">
+        <div class="hull">
+            {% if not courses_list and user.type == "Teacher" %}
+                <div class="section__head">
+                    <p class="h2 no-articles">It's Empty try to add some</p>
+                </div>
+            {% elif not courses_list and user.type == "Student" %}
+                <div class="section__head">
+                    <p class="h2 no-articles">No courses available at this time</p>
+                </div>
+            {% else %}
+                <div class="section__head">
+                    <p class="h2">Total courses: {{ courses_list | length }}</p>
+                </div>
+
+                <div class="section__body">
+                    <ul class="boxes">
+                        {% for course in courses_list %}
+                           <li>
+                                <div class="box">
+                                    <picture class="box__image">
+                                        <img src="{{ course.course_image_url }}" alt="Course Image">
+                                    </picture>
+
+                                    <div class="box__body">
+                                        <p class="box__title h3">Title: {{ course.title }}</p>
+                                        <p class="box__type h5"> Type: {{ course.type }}</p>
+
+                                        <p class="box__entry">
+                                            Description: {{ course.description | slice:":50" }}
+                                        </p>
+                                    </div>
+
+                                    <div class="box__meta">
+                                        <p>
+                                            Average Rating:
+                                            {% if course.average_rating %}
+                                                {{ course.average_rating|floatformat:"1" }}
+                                            {% else %}
+                                                No Rating Yet.
+                                            {% endif %}
+                                        </p>
+                                    </div>
+
+                                    <div class="box__action">
+                                        <a href="{% url 'teacher_app:course_details' course.id %}" class="btn">Details</a>
+                                    </div>
+                                </div>
+                           </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

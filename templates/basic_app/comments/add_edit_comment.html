@@ -1,0 +1,21 @@
+{% extends 'basic_app/base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="section-form section-form--fw">
+        <div class="hull">
+            <div class="section__body">
+                 <form method="post" class="form-main">
+                     {% csrf_token %}
+                     {{ form.as_p }}
+
+                     <div class="section__actions">
+                         <input type="submit" class="btn" value="Submit Review">
+                         <a href="{% url 'teacher_app:course_details' course_id=course.id %}" class="btn">Back</a>
+                     </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
